@@ -23,9 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'm*m2$v)cwpg8%x036$y*8n_a*oq8v^sys2s+c^i3&ma_xdflz5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# modfiy by 2018-5-15
+# close the debug and add the ip address that can be location
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.zosurn.xyz']
 
 
 # Application definition
