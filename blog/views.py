@@ -11,7 +11,7 @@ import datetime
 from blog import models
 from blog.models import Post, BlogPost
 from blog.news import news
-import itchat
+# import itchat
 import json
 from django.http import HttpResponse
 
