@@ -21,3 +21,7 @@ $ ssh-keygen -t rsa -C "your_email@youremail.com"
 
 增加几句话，GitHub中出现了修改的记录，把修改提交并上传。查看GitHub网页中的代码是否得到更新。
 
+## 测试Pycharm更新GitHub代码
+
+选择tools -> git 可以看到熟悉Git操作，但我push，虽然现实push成功了，但GitHub中却完全没有更新。
+
