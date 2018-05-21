@@ -24,4 +24,6 @@ $ ssh-keygen -t rsa -C "your_email@youremail.com"
 ## 测试Pycharm更新GitHub代码
 
 选择tools -> git 可以看到熟悉Git操作，但我push，虽然现实push成功了，但GitHub中却完全没有更新。
+照理来说应该先commit再fetch
+
 
