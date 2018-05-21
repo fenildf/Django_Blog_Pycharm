@@ -17,3 +17,7 @@
 
 $ ssh-keygen -t rsa -C "your_email@youremail.com"
 
+## 测试GitHub桌面版
+
+增加几句话，GitHub中出现了修改的记录，把修改提交并上传。查看GitHub网页中的代码是否得到更新。
+
