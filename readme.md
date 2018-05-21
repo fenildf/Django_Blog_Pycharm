@@ -26,4 +26,8 @@ $ ssh-keygen -t rsa -C "your_email@youremail.com"
 选择tools -> git 可以看到熟悉Git操作，但我push，虽然现实push成功了，但GitHub中却完全没有更新。
 照理来说应该先commit再fetch，但不好意思，是先commit再push就更新成功了。
 
+## 克隆
+可不可以不克隆整个项目，只克隆修改过的文件？比如说pull拉怎么用？
+据我了解可能需要在服务器上搭建一个git服务器。有点麻烦。
+
 
