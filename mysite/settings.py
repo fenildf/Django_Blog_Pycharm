@@ -25,7 +25,7 @@ SECRET_KEY = 'm*m2$v)cwpg8%x036$y*8n_a*oq8v^sys2s+c^i3&ma_xdflz5'
 # SECURITY WARNING: don't run with debug turned on in production!
 # modfiy by 2018-5-15
 # close the debug and add the ip address that can be location
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.zosurn.xyz']
 
@@ -129,3 +129,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),   # 元组，后面的逗号不能省
 )
+
+# STATIC_ROOT = os.path.join(BASE_DIR, "static/")	# 收集Django的静态文件到同一个static中
