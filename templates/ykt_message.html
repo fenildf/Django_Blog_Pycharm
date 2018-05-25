@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+	<link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/static/bootstrap/css/index.css">
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+
+    <title>一卡通信息</title>
+</head>
+<body>
+    <div>
+        <table class="table table-hover table-bordered">
+            <caption>一卡通消费信息</caption>
+            <thead>
+                <tr>
+                    <th>消费时间</th>
+                    <th>消费地点</th>
+                    <th>消费金额</th>
+                    <th>余额</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for list in Cost %}
+                <tr>
+                    <td>{{ list.date }}</td>
+                    <td>{{ list.place }}</td>
+                    <td>{{ list.amount }}</td>
+                    <td>{{ list.balance }}</td>
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>

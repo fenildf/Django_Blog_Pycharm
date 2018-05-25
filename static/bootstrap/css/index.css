@@ -1,10 +1,17 @@
+body {
+	font-size: 12px;
+	padding:0; margin:0;
+
+	background-color: #f3f3ef;
+}
+
 /* 轮播图 */
 .carousel {
 	height: 440px;
-	background-color: #000;
+	background-color: #faf7f7;
 }
 .carousel .item {
-	background-color: #000;
+	background-color: #faf7f7;
 	height: 440px;
 }
 .carousel img{
@@ -63,7 +70,7 @@
 
 /* 文章顶部栏 */
 .item_article_first {
-	background-color: #34374C !important;
+	background-color: #d6de58 !important;
 	border-color: #34374C !important;
 }
 
@@ -94,7 +101,7 @@
 }
 
 .div_article_content {
-	color: #a0a0a0;
+	color: #050406;
     word-wrap:break-word;  
     word-break:break-all;  
 	width: 100%;
@@ -121,7 +128,7 @@
 
 .btn_save_record {
 	width: 100%;
-	background-color: #34374C;
+	background-color: #d6de58;
 	border-color: #34374C;
 }
 
@@ -149,7 +156,7 @@
 
 /* 用户信息 */
 .div_userinfo {
-	background-color: #34374C;
+	background-color: #d6de58;
 	color: white;
 	padding: 12px 24px 12px 24px !important;
 }

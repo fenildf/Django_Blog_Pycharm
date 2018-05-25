@@ -18,13 +18,15 @@ from django.contrib import admin
 from django.urls import path
 
 from blog import views
-
+app_name = 'blog'
 urlpatterns = [
     # path('^index$', )
     url(r'^$', views.index),
-    url(r'^index/$', views.index),
+    url(r'^index.html$', views.index),
     url(r'^hnuer.html$', views.hnuer),
     url(r'^login.html$', views.login),
-    url(r'^weichat_test$', views.weichat_test)
+    url(r'^ykt_message.html', views.OneCard),
+    url(r'^weichat_test$', views.weichat_test),
+    url(r'^post/(?P<pk>[0-9]+)/$', views.detail, name='detail')     # 博客详情页
 
 ]

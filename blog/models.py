@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+from django.urls import reverse
 
 
 class UserInfo(models.Model):
@@ -71,6 +72,11 @@ class Post(models.Model):
     # 这里我们通过 ForeignKey 把文章和 User 关联了起来。
     # 因为我们规定一篇文章只能有一个作者，而一个作者可能会写多篇文章，因此这是一对多的关联关系，和 Category 类似。
     # author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
+    def __str__(self):
+            return self.title
+
+    def get_absolute_url(self):
+        return reverse('blog:detail', kwargs={'pk': self.pk})
 
 
 class BlogPost(models.Model):
@@ -82,3 +88,18 @@ class BlogPost(models.Model):
     title = models.CharField(max_length=150)
     body = models.TextField()
     timestamp = models.DateTimeField()
+
+
+class StudentCard(models.Model):    # 学生一卡通信息 测试表
+    username = models.CharField(max_length=20)
+    passward = models.CharField(max_length=20)
+    cardBalance = models.IntegerField()
+    # cost_table = 消费信息，连接外表
+
+
+class CostInformation(models.Model):
+    date = models.CharField(max_length=20)     # 交易时间
+    place = models.CharField(max_length=20)    # 交易地点
+    amount = models.CharField(max_length=10)  # 交易额
+    balance = models.CharField(max_length=10)  # 余额
+

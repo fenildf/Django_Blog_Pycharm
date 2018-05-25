@@ -4,41 +4,28 @@ from django.contrib.auth.models import User
 from django.contrib.sessions import serializers
 from django.core.serializers import json
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, get_object_or_404
 from django.contrib.auth import authenticate
 import datetime
 # Create your views here.
 from blog import models
-from blog.models import Post, BlogPost
+from blog.models import Post, BlogPost, CostInformation
 from blog.news import news
+from blog.OneCard import ykt_message
 # import itchat
 import json
 from django.http import HttpResponse
+import markdown
 
 
 def index(request):
     # return HttpResponse("hello world!")
-    print("进入index()，下面是爬虫操作")
-    dic = news()
-    # print("dic", dic)
-    # posts = User.objects.all()
+    print("进入index")
 
-    for d in dic:
-        # print(d)
-        # time = d[2].split('/')
-        # timestamp = "2018-"+time[0]+"-"+time[1]+
-
-        nowTime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')  # 现在
-        flag = models.BlogPost.objects.filter(title=d[1])
-        if flag:
-            print("该数据已经存在")
-
-        else:
-
-            models.BlogPost.objects.create(title=d[1], body=d[0], timestamp=nowTime)
-
-    return render(request, "index.html")
-
+    # return render(request, "index.html")
+    blog_list = Post.objects.all()  # 读取POST数据库中的所有文章
+    print("Read the post")
+    return render(request, "index.html", context={'blog_list': blog_list})
 
 user_list = [
     {"user": "jack", "pwd": "abc"},
@@ -76,21 +63,23 @@ def hnuer(request):
     #                 return render(request, "hnuer.html", {'username': username})
 
     # models.BlogPost.objects.create(d)
-
+    # dic = news() # 爬取新闻数据
+    # # sorted(dic,reverse=True)
+    # for d in sorted(dic,reverse=True):
+    #     nowTime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')  # 现在
+    #     flag = models.BlogPost.objects.filter(title=d[1])
+    #     if flag:
+    #         print("该数据已经存在")
+    #     else:
+    #         models.BlogPost.objects.create(title=d[1], body=d[0], timestamp=nowTime)
     post_list = BlogPost.objects.all()  # 读取数据库中的所有文章
-    print(post_list)
+
     return render(request, "hnuer.html", context={'post_list': post_list})
-
-
-# 定义表单模型
 
 
 class UserForm(forms.Form):
     username = forms.CharField(label='用户名：', max_length=100)
     password = forms.CharField(label='密码：', widget=forms.PasswordInput())
-
-
-#  登录
 
 
 def login(request):
@@ -99,7 +88,7 @@ def login(request):
     return render(request, 'login.html')
 
 
-def weichat_test(request):
+def weichat_test(request):     # 请求json数据
     if request.method == 'GET':
         # news = models.BlogPost.objects.all()  # 读取数据库中的所有文章
         # news = serializers.serialize('json', news)
@@ -126,3 +115,35 @@ def weichat_test(request):
         print('news=', news)
         return HttpResponse(json.dumps(news), content_type="application/json")
 
+
+def OneCard(request):
+    print("访问一卡通信息")
+    # 爬取一卡通消费信息
+    """
+    Cost = ykt_message()
+
+    # 存入数据库
+
+    for line in Cost:
+        print("ykt_msg = ", line)
+        flag = models.BlogPost.objects.filter(data=line[2])
+        if flag:
+            print("该数据已经存在")
+        else:
+            models.CostInformation.objects.create(date=line[2], place=line[3], amount=line[1], balance=line[0])
+    """
+    # models.CostInformation.objects.filter().delete() # 删除数据库中的数据
+    # 从数据库取出信息
+    Cost = CostInformation.objects.all()
+
+    return render(request, "ykt_message.html", context={'Cost': Cost})
+
+def detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.body = markdown.markdown(post.body,
+                                  extensions=[
+                                      'markdown.extensions.extra',
+                                      'markdown.extensions.codehilite',
+                                      'markdown.extensions.toc',
+                                  ])
+    return render(request, 'detail.html', context={'post': post})

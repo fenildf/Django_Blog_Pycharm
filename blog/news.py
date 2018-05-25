@@ -2,7 +2,6 @@
 from urllib import request  # 导入urllib库中的request模块
 import re
 
-
 def news():
     url = 'http://www.hnu.edu.cn/'  # 要闻的链接
     # print("url = {0}".format(url))
