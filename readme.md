@@ -1,33 +1,32 @@
-﻿# 个人博客搭建
-
-## GitHub的使用
-
-1. 下载GitHub桌面版
-
-1.1  创建新的仓库，选择本地路径
-创建成功之后，就可以进入本地目录，进行文件的编辑。
-
-1.2  上传到GitHub
+# 个人博客搭建
  
-2. 下载git
+## 开发环境
 
-2.1 创建ssh key
+- python版本：3
+- 后台框架：Django
+- 前端框架：bootstrap
+- 数据库：Django自带sqlite数据库
 
-使用自己注册GitHub时用的邮箱
+## 项目部署到服务器
 
-$ ssh-keygen -t rsa -C "your_email@youremail.com"
+1. 首先开发环境和生产环境需要更改相关配置
+都知道Springboot可以根据不同的配置文件启动，但python不是很清楚，每次都是把代码更新到服务器之后，再更新配置为生产环境
 
-## 测试GitHub桌面版
+> DEBUG = False
+> ...
 
-增加几句话，GitHub中出现了修改的记录，把修改提交并上传。查看GitHub网页中的代码是否得到更新。
+2. git更新
 
-## 测试Pycharm更新GitHub代码
+第一次部署：
+> git clone https://github.com/zosurn/Django_Blog_Pycharm
 
-选择tools -> git 可以看到熟悉Git操作，但我push，虽然现实push成功了，但GitHub中却完全没有更新。
-照理来说应该先commit再fetch，但不好意思，是先commit再push就更新成功了。
+项目更新：
+> git pull
 
-## 克隆
-可不可以不克隆整个项目，只克隆修改过的文件？比如说pull拉怎么用？
-据我了解可能需要在服务器上搭建一个git服务器。有点麻烦。
+## 后台开发
+
+## 前端开发
+
+
 
 
