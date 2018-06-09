@@ -2,6 +2,7 @@
  
 ## 开发环境
 
+- 开发工具：Pycharm
 - python版本：3
 - 后台框架：Django
 - 前端框架：bootstrap
